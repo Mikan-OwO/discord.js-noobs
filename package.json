@@ -1,9 +1,10 @@
 {
-  "name": "discord.hs-noobs",
-  "version": "1.0.0",
-  "description": "パッケージ",
+  "name": "discord.js-noobs",
+  "version": "0.0.1",
+  "description": "This is noobs 初心者用フレームワーク",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "node index.js"
   },
   "repository": {
@@ -11,6 +12,7 @@
     "url": "git+https://github.com/Mikan-OwO/discord.js-noobs.git"
   },
   "keywords": [
+    "discord.js",
     "noobs"
   ],
   "author": "Mikan-OwO",
