@@ -2,6 +2,7 @@
   "name": "discord.js-noobs",
   "version": "0.0.1",
   "description": "This is noobs 初心者用フレームワーク",
+  "publishConfig": { "registry": "https://npm.pkg.github.com/" },
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
