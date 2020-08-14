@@ -1,0 +1,22 @@
+{
+  "name": "discord.hs-noobs",
+  "version": "1.0.0",
+  "description": "パッケージ",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mikan-OwO/discord.js-noobs.git"
+  },
+  "keywords": [
+    "noobs"
+  ],
+  "author": "Mikan-OwO",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mikan-OwO/discord.js-noobs/issues"
+  },
+  "homepage": "https://github.com/Mikan-OwO/discord.js-noobs#readme"
+}
