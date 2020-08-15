@@ -3,6 +3,6 @@ const client = new discord.Client();
 const fs = require("fs");
 
 module.exports => {
-  Client: require("./src/client/Client"),
-  Command: require("./src/command/Command"),
+  Client: require("./client/Client"),
+  Command: require("./command/Command"),
 }
