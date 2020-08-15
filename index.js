@@ -9,12 +9,13 @@ exports.prefix = function prefix(index) {
 }
 
 exports.command = async function cmd(index, run) {
-  let evald;
+  let evaled;
   try {
   evaled = eval(run);
   } catch (error) {
     console.log(error);
   }
+}
 
 function Run(message) {
     if(!message.content.startsWith(prefix)) return;
