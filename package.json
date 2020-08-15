@@ -2,7 +2,7 @@
   "name": "discord.js-noobs",
   "version": "0.0.3",
   "description": "This is noobs 初心者用フレームワーク",
-  "main": "index.js",
+  "main": "./src/index",
   "scripts": {
     "start": "node index.js",
     "test": "node index.js"
