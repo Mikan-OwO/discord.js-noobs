@@ -8,19 +8,10 @@ exports.prefix = function prefix(index) {
   return prefix = index;
 }
 
-exports.command = async function cmd(index, run) {
-  let evaled;
-  try {
-  evaled = eval(run);
-  } catch (error) {
-    console.log(error);
-  }
-}
-
 function Run(message) {
-    if(!message.content.startsWith(prefix)) return;
+    if(message.author.bot || !message.content.startsWith(prefix)) return;
     const [command, ...args] = message.content.slice(prefix.length).split(" ");
-  if(command === cmd(command))
+  if(command === "test") message.channel.send("test!");
 }
 
 client.on("message", message => Run(message));
