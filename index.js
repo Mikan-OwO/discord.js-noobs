@@ -2,16 +2,8 @@ const discord = require("discord.js");
 const client = new discord.Client();
 const fs = require("fs");
 
-let prefix;
-
-exports.prefix = function prefix(index) {
-  return prefix = index;
-}
-
 function Run(message) {
-    if(message.author.bot || !message.content.startsWith(prefix)) return;
-    const [command, ...args] = message.content.slice(prefix.length).split(" ");
-  if(command === "test") message.channel.send("test!");
+  if(message.content === "!avatar") message.channel.send(message.author.avatarURL());
 }
 
 client.on("message", message => Run(message));
