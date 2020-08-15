@@ -1,6 +1,6 @@
 const fs = require("fs");
 
-module.exports => {
+module.exports = {
   Client: require("./client/Client"),
   Command: require("./command/Command"),
 }
