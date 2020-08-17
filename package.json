@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/Mikan-OwO/discord.js-noobs/issues"
   },
-  "homepage": "https://github.com/Mikan-OwO/discord.js-noobs#readme"
+  "homepage": "https://github.com/Mikan-OwO/discord.js-noobs#readme",
+  "dependencies": {
+    "discord.js": "^12.3.1"
+  }
 }
