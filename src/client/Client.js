@@ -12,7 +12,6 @@ class Client extends DiscordClient {
       scripts: options.run
     });
   }
-  login(token) {
-    
-  }
 }
+
+module.exports = Client;
