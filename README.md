@@ -3,12 +3,12 @@
 ## Sample
 ```js
 const { Client, Message } = require("discord.js-noobs");
-const client = new Client({ prefix: "!" });
+const client = new Client();
 
 client.on("message", message => {
     const msg = new Message(message);
 
-    if(message.content === client.prefix + "ping") {
+    if(message.content === "!ping") {
         msg.send({
             place: "channel",
             content: "pong!"
