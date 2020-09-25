@@ -1,6 +1,6 @@
 {
   "name": "discord.js-noobs",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "description": "This is noobs 初心者用フレームワーク",
   "main": "./src/index",
   "scripts": {
