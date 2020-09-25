@@ -1,13 +1,9 @@
-const DiscordClient = require("discord.js").Client;
+const { Client: DiscordClient } = require("discord.js");
 
 class Client extends DiscordClient {
-  constructor(prefix, options = {}) {
-    this.prefix = prefix;
-    this.commands = [];
-    super(options);
-  }
-  addCommand() {
-    
+  constructor(options = {}) {
+    this.prefix = options.prefix;
+    super(options.options);
   }
 }
 
