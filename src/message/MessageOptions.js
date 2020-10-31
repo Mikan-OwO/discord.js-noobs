@@ -3,6 +3,7 @@ class Message {
         this.message = message;
     }
     send(options = {}) {
+        const place = options.place || "channel";
         switch(options.place) {
             case "author":
                 this.message.author.send(options.content);
