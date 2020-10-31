@@ -1,5 +1,5 @@
 module.exports = {
   Client: require("./client/Client"),
-  Message: require("./message/Message"),
+  MessageOptions: require("./message/Message"),
   Command: require("./command/Command"),
 }
