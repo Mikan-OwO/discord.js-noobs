@@ -2,11 +2,11 @@
 
 ## Sample
 ```js
-const { Client, Message } = require("discord.js-noobs");
+const { Client, MessageOptions } = require("discord.js-noobs");
 const client = new Client();
 
 client.on("message", message => {
-    const msg = new Message(message);
+    const msg = new MessageOptions(message);
 
     if(message.content === "!ping") {
         msg.send({
