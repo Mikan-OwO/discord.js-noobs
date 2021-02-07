@@ -13,10 +13,10 @@ class Client extends DiscordClient {
 
     this.on("ready", () => {
       logger.info(`Hello, Logged in as ${this.user.tag}`);
-      logger.info("Guilds :", this.guilds.cache.size);
+      logger.info(`Guilds : ${this.guilds.cache.size}`);
     }).on("message", (msg) => {
       this.prefixes.map(async (prefix) => {
-        const args = msg.content.slice(this.prefix.length).split(" ");
+        const args = msg.content.slice(prefix.length).split(" ");
 
         if (msg.content.startsWith(prefix)) {
           const cmd = await this.commands.get(args.shift());

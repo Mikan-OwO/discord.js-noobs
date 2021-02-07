@@ -45,3 +45,35 @@ module.exports = new Command("ping").run((msg) => {
   msg.reply("pong!");
 });
 ```
+
+## NoobsEmbed
+
+```js
+const { Client, NoobsEmbed } = require("discord.js-noobs");
+const client = new Client({
+  prefixes: ["!"],
+  token: "your token",
+});
+
+//Simple embed
+client.command("help", (msg) => {
+  msg.channel.send(
+    new NoobsEmbed()
+      .setTitle("title")
+      .addField("name", "value")
+      .setColor("RANDOM")
+      .setTimestamp()
+  );
+});
+
+//Pagination
+client.command("help", (msg) => {
+  new NoobsEmbed({
+    type: "book",
+    client: client,
+  }).addPages([
+    new NoobsEmbed().setTitle("1/2").addField("help", "open help"),
+    new NoobsEmbed().setTitle("2/2").addField("ping", "pong"),
+  ]);
+});
+```
