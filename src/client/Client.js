@@ -15,19 +15,28 @@ module.exports = class Client extends (
 
       if (msg.content.startsWith(this.prefix)) {
         const cmd = await this.commands.get(args.shift());
-        if (cmd) return cmd(msg, args);
+        if (cmd) return cmd(msg, args, this);
       }
     });
 
     this.login(token);
   }
-  command(name, fn) {
+  command(name, fn, options = {}) {
     this.commands.set(name, fn);
     return this;
   }
-  fileCommand(filePath) {
-    const { name, fn } = require(filePath);
-    this.command(name, fn);
+  commandDir(filePath, options = {}) {
+    const targetDir = path.resolve(filePath);
+    const files = fs.readdirSync(targetDir);
+
+    if (!files.length) console.warn("The command file cannot be found.");
+
+    files.map((file) => {
+      const { name, fn } = require(path.join(path.resolve(filePath), file));
+
+      this.command(name, fn);
+    });
+
     return this;
   }
 };

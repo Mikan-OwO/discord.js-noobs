@@ -4,5 +4,6 @@ module.exports = class Command {
   }
   run(fn) {
     this.fn = fn;
+    return this;
   }
 };
