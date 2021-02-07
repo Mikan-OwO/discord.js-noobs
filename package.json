@@ -1,6 +1,6 @@
 {
   "name": "discord.js-noobs",
-  "version": "0.9.2",
+  "version": "1.0.0",
   "description": "This is noobs 初心者用フレームワーク",
   "main": "./src/index",
   "scripts": {
@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/Mikan-OwO/discord.js-noobs#readme",
   "dependencies": {
-    "discord.js": "^12.3.1"
+    "discord.js": "^12.3.1",
+    "parrot-logger": "^1.0.0"
   }
 }

@@ -1,9 +1,12 @@
 const { Client } = require("../index");
 
-const client = new Client("your token", "prefix");
+const client = new Client({
+  prefixes: ["!"],
+  token: "your token",
+});
 
 client
-  .command("test", (msg, args) => {
-    msg.reply(`ok!\nargs:\n${args.join("\n")}`);
+  .command("hi", (msg, args) => {
+    msg.reply(`hi ${args.join(" ")}!`);
   })
   .command("ping", (msg) => msg.channel.send("pong!"));

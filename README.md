@@ -18,7 +18,10 @@ create new Client
 
 ```js
 const { Client } = require("discord.js-noobs");
-const client = new Client("yourToken", "prefix");
+const client = new Client({
+  prefixes: ["!"],
+  token: "your token",
+});
 ```
 
 add command
