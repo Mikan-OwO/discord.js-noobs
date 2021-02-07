@@ -1,6 +1,6 @@
 # discord.js-noobs
 
-[![NPM](https://nodei.co/npm/quickcord.png)](https://nodei.co/npm/discord.js-noobs/)
+[![NPM](https://nodei.co/npm/discord.js-noobs.png)](https://nodei.co/npm/discord.js-noobs/)
 
 ![GitHub package.json version](https://img.shields.io/github/package-json/v/Mikan-OwO/discord.js-noobs)
 ![GitHub issues](https://img.shields.io/github/issues/Mikan-OwO/discord.js-noobs)
