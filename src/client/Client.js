@@ -6,8 +6,10 @@ const path = require("path");
 const logger = new Logger();
 
 class Client extends DiscordClient {
+  #ignoreBots;
   constructor(config = {}) {
     super(config.options ?? {});
+    this.#ignoreBots = config.ignoreBots ?? false;
     this.prefixes = config.prefixes ?? ["!"];
     this.commands = new Collection();
 
@@ -15,11 +17,12 @@ class Client extends DiscordClient {
       logger.info(`Hello, Logged in as ${this.user.tag}`);
       logger.info(`Guilds : ${this.guilds.cache.size}`);
     }).on("message", (msg) => {
+      if (this.#ignoreBots && msg.author.bot) return;
       this.prefixes.map(async (prefix) => {
-        const args = msg.content.slice(prefix.length).split(" ");
+        const [cmd, ...args] = msg.content.slice(prefix.length).split(" ");
 
         if (msg.content.startsWith(prefix)) {
-          const { fn, options } = await this.commands.get(args.shift());
+          const { fn, options } = await this.commands.get(cmd);
           if (fn) {
             if (
               options?.practicable &&
@@ -36,7 +39,9 @@ class Client extends DiscordClient {
     this.login(config.token);
   }
   command(name, fn, options = {}) {
-    this.commands.set(name, { fn, options });
+    if (Array.isArray(name))
+      name.map((n) => this.commands.set(n, { fn, options }));
+    else this.commands.set(name, { fn, options });
     return this;
   }
   commandsDir(filePath) {
