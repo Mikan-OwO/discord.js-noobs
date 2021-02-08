@@ -19,19 +19,27 @@ class Client extends DiscordClient {
         const args = msg.content.slice(prefix.length).split(" ");
 
         if (msg.content.startsWith(prefix)) {
-          const cmd = await this.commands.get(args.shift());
-          if (cmd) return cmd(msg, args, this);
+          const { fn, options } = await this.commands.get(args.shift());
+          if (fn) {
+            if (
+              options?.practicable &&
+              !options?.practicable?.includes(msg.author.id)
+            )
+              return;
+
+            await fn(msg, args, this);
+          }
         }
       });
     });
 
     this.login(config.token);
   }
-  command(name, fn) {
-    this.commands.set(name, fn);
+  command(name, fn, options = {}) {
+    this.commands.set(name, { fn, options });
     return this;
   }
-  commandDir(filePath) {
+  commandsDir(filePath) {
     const targetDir = path.resolve(filePath);
     const files = fs.readdirSync(targetDir);
 
