@@ -22,7 +22,7 @@ class Client extends DiscordClient {
         const [cmd, ...args] = msg.content.slice(prefix.length).split(" ");
 
         if (msg.content.startsWith(prefix)) {
-          const { fn, options } = await this.commands.get(cmd);
+          const { fn, options } = (await this.commands.get(cmd)) ?? {};
           if (fn) {
             if (
               options?.practicable &&
@@ -44,16 +44,21 @@ class Client extends DiscordClient {
     else this.commands.set(name, { fn, options });
     return this;
   }
-  commandsDir(filePath, options = {}) {
+  commandsDir(filePath) {
     const targetDir = path.resolve(filePath);
     const files = fs.readdirSync(targetDir);
 
     if (!files.length) console.warn("The command file cannot be found.");
 
     files.map((file) => {
-      const { name, fn } = require(path.join(path.resolve(filePath), file));
+      const { name, fn, options } = require(path.join(
+        path.resolve(filePath),
+        file
+      ));
 
-      this.command(name, { fn, options });
+      if (Array.isArray(name))
+        name.map((n) => this.command(n, { fn, options }));
+      else this.command(name, { fn, options });
     });
 
     return this;
