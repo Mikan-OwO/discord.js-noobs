@@ -44,7 +44,7 @@ class Client extends DiscordClient {
     else this.commands.set(name, { fn, options });
     return this;
   }
-  commandsDir(filePath) {
+  commandsDir(filePath, options = {}) {
     const targetDir = path.resolve(filePath);
     const files = fs.readdirSync(targetDir);
 
@@ -53,7 +53,7 @@ class Client extends DiscordClient {
     files.map((file) => {
       const { name, fn } = require(path.join(path.resolve(filePath), file));
 
-      this.command(name, fn);
+      this.command(name, { fn, options });
     });
 
     return this;
