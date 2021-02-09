@@ -6,19 +6,23 @@ const path = require("path");
 const logger = new Logger();
 
 class Client extends DiscordClient {
+  #readyMessage;
   #ignoreBots;
   constructor(config = {}) {
     super(config.options ?? {});
+    this.#readyMessage =
+      config.readyMessage ??
+      ((client) => `Guilds : ${client.guilds.cache.size}`);
     this.#ignoreBots = config.ignoreBots ?? false;
-    this.prefixes = config.prefixes ?? ["!"];
+    this.prefix = config.prefix ?? ["!"];
     this.commands = new Collection();
 
     this.on("ready", () => {
       logger.info(`Hello, Logged in as ${this.user.tag}`);
-      logger.info(`Guilds : ${this.guilds.cache.size}`);
+      logger.info(this.#readyMessage(this));
     }).on("message", (msg) => {
       if (this.#ignoreBots && msg.author.bot) return;
-      this.prefixes.map(async (prefix) => {
+      this.prefix.map(async (prefix) => {
         const [cmd, ...args] = msg.content.slice(prefix.length).split(" ");
 
         if (msg.content.startsWith(prefix)) {
@@ -56,9 +60,8 @@ class Client extends DiscordClient {
         file
       ));
 
-      if (Array.isArray(name))
-        name.map((n) => this.command(n, { fn, options }));
-      else this.command(name, { fn, options });
+      if (Array.isArray(name)) name.map((n) => this.command(n, fn, options));
+      else this.command(name, fn, options);
     });
 
     return this;

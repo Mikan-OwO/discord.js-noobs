@@ -19,7 +19,8 @@ create new Client
 ```js
 const { Client } = require("discord.js-noobs");
 const client = new Client({
-  prefixes: ["!"],
+  prefix: ["!"],
+  readyMessage: (client) => `User : ${client.users.cache.size}`,
   token: "your token",
 });
 ```
@@ -27,9 +28,21 @@ const client = new Client({
 add command
 
 ```js
+//Simple command
 client.command("ping", (msg) => {
   msg.reply("pong!");
 });
+
+//add options
+client.command(
+  "hello",
+  (msg, args) => {
+    msg.reply(`hello ${args.join(" ")}`);
+  },
+  {
+    practicable: ["user id"],
+  }
+);
 ```
 
 load command
@@ -51,7 +64,7 @@ module.exports = new Command("ping").run((msg) => {
 ```js
 const { Client, NoobsEmbed } = require("discord.js-noobs");
 const client = new Client({
-  prefixes: ["!"],
+  prefix: ["!"],
   token: "your token",
 });
 
